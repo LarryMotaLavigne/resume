@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        {% include 'fragments/header.html' %}
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <h1>Mes Expériences</h1>
+
+                <h2>Professionnelles</h2>
+
+                <p><span id="MinDef" class="image left"><img src="{% static "images/mindef.jpg" %}"
+                                                             alt="Ministère de la Défense"/></span>
+                <h4>Ministère de la Défense</h4>
+                Ce stage a été réalisé dans le cadre de mon stage de fin d'étude.
+                <br>
+                J'ai eu l'occasion de travailler sur la mise en place d'une plate-forme web de A à Z afin de mettre à
+                disposition du service un outil de gestion de documents électroniques (GED).
+                Cet outil de GED permettait de gérer la diffusion de documents avec une gestion de droits utilisateurs
+                multi-profils et avec plusieurs niveaux d'accès.
+                <br>
+                Ce stage m'a permis de travailler avec le framework web Django et le langage Python.
+                <br>
+                <b>Compétences acquises :</b> Django 1.10, Python 3.4, Shibboleth, Chiffrement, Sécurité
+
+                </p>
+
+                <p><span id="Orange" class="image left"><img src="{% static "images/obs.jpg" %}"
+                                                             alt="Orange Business Services"/></span>
+                <h4>Orange Business Services</h4>
+                Ce stage a été réalisé dans le cadre de mon stage de 4<sup>ème</sup> année.
+                <br>
+                J'ai travaillé sur une plate-forme de gestion des fédérations de sports (Gestion des clubs, licenciés,
+                ...
+                etc).
+                Mon travail s'est déroulé principalement en 3 axes :
+                <ul>
+                    <li>Développement d'un module Webcam afin de permettre la prise de photo dans le processus de
+                        création
+                        de licences sportive.
+                    </li>
+                    <li>Affichage d'un trombinoscope de l'ensemble des licenciés d'un club de sport</li>
+                    <li>Réalisation d'un module de gestion de transactions bancaires (Récupération de fichiers Excel
+                        depuis
+                        une boîte mail Exchange, analyse des fichiers et remontée d'alertes)
+                    </li>
+                </ul>
+                <b>Compétences acquises:</b> Play!, Java, Frontend
+                </p>
+
+                <hr/>
+
+                <h2>Scolaires</h2>
+
+                <p><span class="image left"><img src="{% static "images/prd.png" %}" alt=""/></span>
+                <h4>Tracking par filtre particulaire</h4>
+                Ce Projet de Fin d'Etude, réalisé durant la 5<sup>ème</sup> année d'étude à Polytech Tours consiste à
+                analyser un algorithme de suivi multi-objets utilisant une méthode de filtre particulaire ainsi qu'une
+                représentation par graphes.
+                <br>
+                De fortes notions mathématiques ont été requises afin de comprendre le principe de filtre particulaire
+                et
+                d'envisager de possibles améliorations (contraintes d'occlusion notamment).
+                <br>
+                La réalisation d'une application PC basée sur Qt et développée en C++ a permis la mise en place de
+                l'algorithme de suivi et la détection des personnes.
+                <br>
+                <b>Compétences :</b> C++, Qt, Traitement d'images
+                </p>
+                <p><span class="image right"><img src="{% static "images/computer.jpg" %}" alt=""/></span>
+                <h4>Gestion des relations entreprises de Polytech Tours</h4>
+                Ce Projet d'Ingénierie Logicielle, réalisé en groupe durant la 4<sup>ème</sup> année, m'a amené à gérer
+                un
+                groupe de 6 personnes afin de développer une application web pour contribuer à l'amélioration interne de
+                l'école.
+                <br>
+                Ce projet m'a notamment permis de comprendre les enjeux d'une bonne gestion d'équipe mais aussi la
+                gestion
+                de documents électroniques et l'importance de statistiques afin de piloter ces relations qui demeurent
+                importante pour l'évolution de Polytech Tours.
+                <br>
+                <b>Compétences :</b> Gestion de projet, Encadrement d'équipe, Backend
+                </p>
+
+
+            </div>
+        </div>
+
+        {% include 'fragments/footer.html' %}
+
+    </div>
+{% endblock %}

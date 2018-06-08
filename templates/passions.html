@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        {% include 'fragments/header.html' %}
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <h1>Mes Passions</h1>
+
+
+                <h2>Sport</h2>
+                <ul>
+                    <li>Football</li>
+                    <li>Course à pied (10 et 20 km de Tours)</li>
+                </ul>
+                <hr/>
+                <h2>Musique</h2>
+                <p>
+                    <span class="image left"><img src="{% static "images/epiphone.jpg" %}" alt="Ma guitare"/></span>
+                <h4>Guitare</h4>
+                <ul>
+                    <li>6 ans de guitare</li>
+                    <li>5 ans de cours de guitare</li>
+                    <li>3 ans de chargé de cours au Club Music de Polytech Tours</li>
+                    <li>Instrument : <b>Epiphone Les Paul Standard Plus Pro TB</b></li>
+                </ul>
+                </p>
+                <br>
+                <p>
+                    <span class="image right"><img src="{% static "images/piano.jpg" %}" alt="Mon piano"/></span>
+                <h4>Piano</h4>
+                <ul>
+                    <li>1 an de piano</li>
+                    <li>Instrument : <b>Casio CDP 235</b></li>
+                </ul>
+                </p>
+                <br>
+
+                <hr/>
+
+
+                <h2>Voyages</h2>
+                <ul>
+                    <li>Îles Espagnoles</li>
+                    <li>République Dominicaine</li>
+                    <li>Canada</li>
+                    <li>Angleterre (Oxford, Londres)</li>
+                    <li>Mexique</li>
+                    <li>Hongrie</li>
+                </ul>
+
+
+                <hr/>
+                <h2>Loisirs</h2>
+
+                <ul>
+                    <li>Jeux Vidéos</li>
+                    <li>Sport</li>
+                    <li>Cinéma</li>
+                    <li>Séries TV</li>
+                    <li>Mangas</li>
+                </ul>
+
+
+            </div>
+        </div>
+
+        {% include 'fragments/footer.html' %}
+
+    </div>
+
+{% endblock %}

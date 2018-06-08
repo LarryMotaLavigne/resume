@@ -1,0 +1,17 @@
+<!-- Header -->
+{% load static %}
+<header id="header">
+    <div class="inner">
+        <!-- Logo -->
+        <a href="{% url 'main' %}" class="logo">
+            <span class="symbol"><img src="{% static "images/icons/icon-32x32.png"%}" alt=""/></span><span
+                class="title">{{ request.session.firstName }} {{ request.session.lastName }}</span>
+        </a>
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

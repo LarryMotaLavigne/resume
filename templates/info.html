@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        {% include 'fragments/header.html' %}
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <h1>CV</h1>
+
+                <hr/>
+
+                <h2>Expériences</h2>
+
+                <p>
+                    <span class="image left"><img src="{% static "images/mindef.jpg" %}" alt="Ministère de la Défense"/></span>
+                <h4><a href="experiences.html#MinDef">Développement d'une plateforme de gestion de documents
+                    électroniques</a></h4>
+                <b>Ministère de la Défense</b> | Avril - Septembre 2016
+                <br>
+                Développement en autonomie d'une plate-forme web avec le framework Django/Python des spécifications à la
+                mise en production.
+                </p>
+
+                <br>
+                <br>
+                <br>
+
+                <p>
+                    <span class="image left"><img src="/static/images/obs.jpg" alt="Orange Business Services"/></span>
+                <h4><a href="experiences.html#Orange">Développement Web</a></h4>
+                <b>Orange Applications for Business</b> | Juin - Septembre
+                <br>
+                Développement de modules à destination d'une plate-forme de gestion des fédérations de sport.
+                </p>
+                <br>
+                <ul>
+                    <li><a href="{% url 'experiences' %}">Retrouvez plus d'informations sur mes experiences ici</a></li>
+                </ul>
+                <hr/>
+
+                <h2>Diplômes et Etudes</h2>
+                <ul>
+                    <li>Septembre 2016 - Décembre 2016 : <b>Master en Management et Administration des Entreprises</b>,
+                        IAE
+                        Tours
+                    </li>
+                    <li>Septembre 2011 - Septembre 2016 : <b>Ingénieur Informatique</b>, Polytech Tours</li>
+                    <li>Juillet 2011 : <b>BAFA</b> - Brevet d'Aptitude aux Fonctions d'Animateur</li>
+                </ul>
+
+                <hr/>
+
+                <h2>Compétences</h2>
+                <div class="row">
+                    <div class="6u 12u$(medium)">
+                        <ul>
+                            <li>C, C++, C#, Java, Python</li>
+                            <li>HTML, CSS/Bootstrap, PHP, JavaScript/JQuery, Dango, Framework Play!, Java EE, .NET,
+                                React,
+                                NodeJS
+                            </li>
+                            <li>JIRA, Jenkins, Sonar, Méthodes Agiles (Scrum), Latex, Versionning (Git, Subversion)</li>
+                        </ul>
+                    </div>
+                    <div class="6u$ 12u$(medium)">
+                        <ul>
+                            <li>MySQL, PostreSQL, UML/Merise</li>
+                            <li>Apache, Shibboleth, Chiffrement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <h2>Langues</h2>
+                <ul>
+                    <li>Anglais : TOEIC 935</li>
+                    <li>Espagnol : Niveau BAC</li>
+                </ul>
+
+
+            </div>
+        </div>
+
+        {% include 'fragments/footer.html' %}
+
+    </div>
+{% endblock %}

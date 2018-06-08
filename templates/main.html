@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        {% include 'fragments/header.html' %}
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <header>
+                    <h1>{{ request.session.headline }}</h1>
+                    <p>
+                    <span class="image left">
+                    <img src="{% static "images/photo.png"%}" alt="" style="border: 5px solid black"/>
+                    </span>Bonjour,<br>
+                        Je suis actuellement embauché en tant qu'Ingénieur Etude et Développement avec un rôle de
+                        Security
+                        Officer au sein d'une équipe travaillant sur nos notions d'authentification bancaire.
+                        <br>
+                        Je travaille notamment sur des rédactions de cibles de sécurité ainsi que sur des problèmes liés
+                        à
+                        la performance et la qualité de code.
+                        <br>
+                        Passionné par les technologies liées au JavaScript (React, NodeJS, ...), j'affectionne tout
+                        particulièrement le domaine de la sécurité informatique.
+                    </p>
+                </header>
+                <section class="tiles">
+                    <article class="style2">
+									<span class="image">
+										<img src="{% static "images/computer.jpg"%}" alt=""/>
+									</span>
+                        <a href={% url 'info' %} >
+                            <h2>Curriculum Vitae</h2>
+                            <div class="content">
+                                <p>Mes compétences en informatique et dans d'autres domaines !</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style6">
+									<span class="image">
+										<img src="{% static "images/desk.jpg"%}" alt=""/>
+									</span>
+                        <a href={% url 'experiences' %}>
+                            <h2>Mes Expériences</h2>
+                            <div class="content">
+                                <p></p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style4">
+									<span class="image">
+										<img src="{% static "images/mountain.jpg"%}" alt=""/>
+									</span>
+                        <a href={% url 'passions' %}>
+                            <h2>Mes Passions</h2>
+                            <div class="content">
+                                <p></p>
+                            </div>
+                        </a>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+        {% include 'fragments/footer.html' %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+# Custom gitignore
+.idea
+*.whl
+venv/
+B2R/secret.py
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py

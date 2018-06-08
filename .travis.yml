@@ -1,0 +1,25 @@
+language: python
+
+python:
+  - 3.7.0
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.6"
+
+env:
+  global:
+    - DATABASE_URL=postgres://postgres@localhost/travisdb
+    - BUILD_ON_TRAVIS=true
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - psql -c "CREATE DATABASE travisdb;" -U postgres
+  - python3 manage.py makemigrations --noinput
+
+script:
+  - python manage.py test

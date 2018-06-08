@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block title %}Accueil - MotaLavigne{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="{% static "images/icons/icon-32x32.png"%}" type="image/x-icon"/>
+    <meta name="theme-color" content="#050096">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="{% static "assets/css/main.css" %}"/>
+    <!--[if lte IE 9]><link rel="stylesheet" href="{% static "assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="{% static "assets/css/ie8.css" /><![endif]-->
+
+    <!--[if lte IE 8]><script src="{% static "assets/js/ie/html5shiv.js"></script><![endif]-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="canonical" href="https://weather-pwa-sample.firebaseapp.com/final/">
+    <link rel="manifest" href="/manifest.json">
+    <!--Add to home screen for Safari on iOS-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather PWA">
+    <link rel="apple-touch-icon" href="{% static "images/icons/icon-152x152.png"%}">
+    <meta name="msapplication-TileImage" content="{% static "images/icons/icon-144x144.png"%}">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+    {% block more_header %}{% endblock %}
+</head>
+<body>
+{% block header %}{% endblock %}
+{% block body %}{% endblock %}
+{% block menu %}
+    {% include 'fragments/menu.html' %}
+{% endblock %}
+{% block footer %}
+    <!-- Uncomment the line below when ready to test with fake data -->
+    <script src="{% static "scripts/app.js"%}" async></script>
+    <!-- Scripts -->
+    <script src="{% static "assets/js/jquery.min.js"%}"></script>
+    <script src="{% static "assets/js/skel.min.js"%}"></script>
+    <script src="{% static "assets/js/util.js"%}"></script>
+    <!--[if lte IE 8]><script src="{% static "assets/js/ie/respond.min.js"%}"></script><![endif]-->
+    <script src="{% static "assets/js/main.js"%}"></script>
+{% endblock %}
+</body>
+</html>
