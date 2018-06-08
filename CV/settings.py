@@ -15,9 +15,6 @@ from B2R import secret
 # LinkedIn Info
 #########################################################
 
-LINKEDIN_PROFILE_URL = secret.LINKEDIN_PROFILE_URL
-LINKEDIN_APPLICATION_KEY = secret.LINKEDIN_APPLICATION_KEY
-LINKEDIN_APPLICATION_SECRET = secret.LINKEDIN_APPLICATION_SECRET
 URL_WITH_LINKEDIN_AUTH = ['main', 'experiences', 'info', 'passions', 'presentations']
 URL_WITHOUT_LINKEDIN_AUTH = ['index']
 
