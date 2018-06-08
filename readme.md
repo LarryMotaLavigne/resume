@@ -1,4 +1,5 @@
 # CV
+[![Build Status](https://travis-ci.com/Squalex/CV.svg?branch=master)](https://travis-ci.com/Squalex/CV)
 
 The target of this project is to provide simple and personnal Website to anyone who want to display his profile and resume in a professional way.
 
