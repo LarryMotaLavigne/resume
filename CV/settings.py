@@ -9,8 +9,6 @@ from django.conf.global_settings import DATABASES
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
 
-from B2R import secret
-
 #########################################################
 # LinkedIn Info
 #########################################################
