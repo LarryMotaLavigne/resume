@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
 ]
 
-SECRET_KEY = secret.DJANGO_SECRET_KEY
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,8 +85,10 @@ WSGI_APPLICATION = 'CV.wsgi.application'
 #  Environment configuration
 #########################################################
 
-if os.getenv('BUILD_ON_TRAVIS', None):
+if os.getenv('PRODUCTION', None):
     from B2R.production import *
+elif os.getenv('BUILD_ON_TRAVIS', None):
+    from B2R.travis import *
 else:
     from B2R.development import *
 
