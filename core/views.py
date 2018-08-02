@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from core.models import Contact
+
 
 class IndexView(TemplateView):
     template_name = "index.html"
@@ -8,7 +10,6 @@ class IndexView(TemplateView):
 
 class MainView(TemplateView):
     template_name = "main.html"
-
 
 class ExperiencesView(TemplateView):
     template_name = "experiences.html"

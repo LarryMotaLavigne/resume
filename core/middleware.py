@@ -1,10 +1,12 @@
 import logging
 
+from django.db.models import F
 from django.shortcuts import redirect
 from linkedin import linkedin
 
 from CV.settings import LINKEDIN_APPLICATION_KEY, LINKEDIN_APPLICATION_SECRET, LINKEDIN_APPLICATION_RETURN_CALLBACK, \
     URL_WITH_LINKEDIN_AUTH, URL_WITHOUT_LINKEDIN_AUTH
+from core.models import Contact
 
 logger = logging.getLogger("middleware")
 
@@ -73,3 +75,9 @@ class LinkedinMiddleware(object):
         request.session['firstName'] = data.get('firstName')
         request.session['lastName'] = data.get('lastName')
         request.session['headline'] = data.get('headline')
+        contact, created = Contact.objects.get_or_create(first_name=data.get('firstName'), last_name=data.get('lastName'), headline=data.get('headline'))
+        if not created:
+            logger.debug("Not created :" + str(contact.count))
+            contact.count = contact.count + 1
+            logger.debug("New count :" + str(contact.count))
+            contact.save()

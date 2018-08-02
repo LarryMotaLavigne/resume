@@ -11,11 +11,11 @@
         <div id="main">
             <div class="inner">
                 <header>
-                    <h1>{{ request.session.headline }}</h1>
+                    <h1>Ingénieur Informatique</h1>
                     <p>
                     <span class="image left">
                     <img src="{% static "images/photo.png"%}" alt="" style="border: 5px solid black"/>
-                    </span>Bonjour,<br>
+                    </span>Bonjour {{ request.session.firstName }},<br>
                         Je suis actuellement embauché en tant qu'Ingénieur Etude et Développement avec un rôle de
                         Security
                         Officer au sein d'une équipe travaillant sur nos notions d'authentification bancaire.
