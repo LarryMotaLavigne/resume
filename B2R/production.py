@@ -1,5 +1,8 @@
 # Need to be redefined and tested
+import os
+
 from B2R import secret
+from CV.settings import BASE_DIR
 
 ENVIRONMENT_NAME = 'PRODUCTION'
 ENVIRONMENT_COLOR = 'red'
@@ -8,12 +11,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'travisdb',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

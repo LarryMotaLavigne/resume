@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'CV.wsgi.application'
 #  Environment configuration
 #########################################################
 
-if os.getenv('PRODUCTION', None):
+if os.getenv('PRODUCTION', True):
     from B2R.production import *
-elif os.getenv('BUILD_ON_TRAVIS', None):
+elif os.getenv('BUILD_ON_TRAVIS', True):
     from B2R.travis import *
 else:
     from B2R.development import *
