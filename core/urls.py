@@ -16,8 +16,8 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.urls import path
 
+from CV.settings import base
 from core import views
-from CV import settings
 
 urlpatterns = [
                   path('', views.IndexView.as_view(), name='index'),
@@ -26,5 +26,4 @@ urlpatterns = [
                   path('info/', views.InfoView.as_view(), name='info'),
                   path('passions/', views.PassionsView.as_view(), name='passions'),
                   path('presentations/', views.PresentationView.as_view(), name='presentations'),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+              ] + static(base.MEDIA_URL, document_root=base.MEDIA_ROOT)

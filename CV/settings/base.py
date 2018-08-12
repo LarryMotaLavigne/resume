@@ -5,10 +5,6 @@ Django settings for CV project.
 
 import os
 
-from django.conf.global_settings import DATABASES
-from django.core.exceptions import ImproperlyConfigured
-from django.urls import reverse_lazy
-
 #########################################################
 # LinkedIn Info
 #########################################################
@@ -39,12 +35,7 @@ INSTALLED_APPS = [
 
     # Application
     'core',
-
-    # Debug
-    "debug_toolbar",
-
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +45,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'core.middleware.LinkedinMiddleware',
 ]
 
@@ -63,7 +53,7 @@ ROOT_URLCONF = 'CV.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, '../templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,17 +70,6 @@ TEMPLATES = [
 SITE_ID = 1
 
 WSGI_APPLICATION = 'CV.wsgi.application'
-
-#########################################################
-#  Environment configuration
-#########################################################
-
-if os.getenv('PRODUCTION', None):
-    from B2R.production import *
-elif os.getenv('BUILD_ON_TRAVIS', None):
-    from B2R.travis import *
-else:
-    from B2R.development import *
 
 #########################################################
 # Authentication
@@ -182,7 +161,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, '../static'),
 )
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
