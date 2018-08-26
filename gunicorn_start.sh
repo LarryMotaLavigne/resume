@@ -1,10 +1,10 @@
 #!/bin/bash
 
 NAME="Resume"                                     # Name of the application
-DJANGODIR=/home/web/resume/CV                     # Django project directory
+DJANGODIR=/home/web/resume                        # Django project directory
 SOCKFILE=/home/web/resume/run/gunicorn.sock       # we will communicate using this unix socket
 USER=web                                          # the user to run as
-GROUP=webapps                                     # the group to run as
+GROUP=web                                         # the group to run as
 NUM_WORKERS=3                                     # how many worker processes should Gunicorn spawn
 DJANGO_SETTINGS_MODULE=CV.settings.production     # which settings file should Django use
 DJANGO_WSGI_MODULE=CV.wsgi                        # WSGI module name
@@ -13,7 +13,7 @@ echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
 cd $DJANGODIR
-source ../bin/activate
+source ./bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
