@@ -9,8 +9,10 @@ import os
 # LinkedIn Info
 #########################################################
 
-URL_WITH_LINKEDIN_AUTH = ['main', 'experiences', 'info', 'passions', 'presentations']
-URL_WITHOUT_LINKEDIN_AUTH = ['index']
+PAGES_WITH_LINKEDIN_AUTH_REQUIRED = ['main', 'experiences', 'info', 'passions', 'presentations']
+PAGES_WITHOUT_LINKEDIN_AUTH_REQUIRED = ['index']
+LINKEDIN_APPLICATION_PROFILE = ['r_basicprofile']
+
 
 #########################################################
 # Base
@@ -45,7 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'core.middleware.LinkedinMiddleware',
+    'django_linkedin_middleware.middleware.LinkedinMiddleware',
 ]
 
 ROOT_URLCONF = 'resume.urls'

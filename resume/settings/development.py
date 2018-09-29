@@ -7,12 +7,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'resume',
-        'USER': 'resume_user',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 INTERNAL_IPS = ['127.0.0.1']  # django-debug-toolbar need
@@ -27,7 +26,6 @@ LINKEDIN_APPLICATION_RETURN_CALLBACK = 'http://localhost:8000/main'
 LINKEDIN_PROFILE_URL = secret.LINKEDIN_PROFILE_URL
 LINKEDIN_APPLICATION_KEY = secret.LINKEDIN_APPLICATION_KEY
 LINKEDIN_APPLICATION_SECRET = secret.LINKEDIN_APPLICATION_SECRET
-
 
 INSTALLED_APPS += (
         'debug_toolbar',

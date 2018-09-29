@@ -1,10 +1,13 @@
 version: '3'
 services:
-  db:
-    image: postgres
+  database:
+    restart: always
+    container_name: resume_database
+    image: postgres:latest
   web:
+    container_name: resume_web
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 --settings=resume.settings.development
     volumes:
       - .:/code
     ports:
