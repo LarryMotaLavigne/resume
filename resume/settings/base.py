@@ -1,5 +1,5 @@
 """
-Django settings for CV project.
+Django settings for resume project.
 
 """
 
@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'core.middleware.LinkedinMiddleware',
 ]
 
-ROOT_URLCONF = 'CV.urls'
+ROOT_URLCONF = 'resume.urls'
 
 TEMPLATES = [
     {
@@ -61,7 +61,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'CV.context_processors.from_settings',  # Admin site color and environment warning
+                'resume.context_processors.from_settings',  # Admin site color and environment warning
             ],
         },
     },
@@ -69,7 +69,7 @@ TEMPLATES = [
 
 SITE_ID = 1
 
-WSGI_APPLICATION = 'CV.wsgi.application'
+WSGI_APPLICATION = 'resume.wsgi.application'
 
 #########################################################
 # Authentication

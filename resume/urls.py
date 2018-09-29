@@ -1,4 +1,4 @@
-"""CV URL Configuration
+"""resume URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -28,7 +28,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     import debug_toolbar
-
     urlpatterns = [
                       url(r'^__debug__/', include(debug_toolbar.urls)),
                   ] + urlpatterns

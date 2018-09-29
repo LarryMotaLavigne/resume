@@ -1,5 +1,5 @@
-from CV.settings import secret
-from CV.settings.base import *
+from resume.settings import secret
+from resume.settings.base import *
 
 ENVIRONMENT_NAME = 'DEVELOPMENT'
 ENVIRONMENT_COLOR = 'grey'
@@ -7,8 +7,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'resume',
+        'USER': 'resume_user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 INTERNAL_IPS = ['127.0.0.1']  # django-debug-toolbar need

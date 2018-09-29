@@ -1,6 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
 from django.contrib.sites.models import Site
 
 from core.models import Contact
@@ -13,10 +11,10 @@ class Sites(admin.ModelAdmin):
     list_display = ["id", "domain", "name"]
 
 
-admin.site.site_header = "CV Administration"
-admin.site.site_title = "CV Administration"
+admin.site.site_header = "resume Administration"
+admin.site.site_title = "resume Administration"
 
 
 @admin.register(Contact)
 class Contact(admin.ModelAdmin):
-    list_display = ["first_name", "last_name", "headline", "count"]
+    list_display = ["first_name", "last_name", "headline", "count", "last_connection"]

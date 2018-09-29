@@ -7,10 +7,12 @@ from linkedin import linkedin
 from core.models import Contact
 
 if settings.DEBUG:
-    from CV.settings.development import LINKEDIN_APPLICATION_KEY, LINKEDIN_APPLICATION_SECRET, LINKEDIN_APPLICATION_RETURN_CALLBACK, \
+    from resume.settings.development import LINKEDIN_APPLICATION_KEY, LINKEDIN_APPLICATION_SECRET, \
+        LINKEDIN_APPLICATION_RETURN_CALLBACK, \
         URL_WITH_LINKEDIN_AUTH, URL_WITHOUT_LINKEDIN_AUTH
 else:
-    from CV.settings.production import LINKEDIN_APPLICATION_KEY, LINKEDIN_APPLICATION_SECRET, LINKEDIN_APPLICATION_RETURN_CALLBACK, \
+    from resume.settings.production import LINKEDIN_APPLICATION_KEY, LINKEDIN_APPLICATION_SECRET, \
+        LINKEDIN_APPLICATION_RETURN_CALLBACK, \
         URL_WITH_LINKEDIN_AUTH, URL_WITHOUT_LINKEDIN_AUTH
 
 logger = logging.getLogger("middleware")
@@ -52,38 +54,54 @@ class LinkedinMiddleware(object):
         """
         logger.debug("AUTH CODE :" + str(self.authentication.authorization_code))
         # Exemple from the request : 'http://localhost:5000/?code=AQQFXVgx-5EHkyxBNMdQOyAIowfYy-uPr4AcdyKmf0FiGr7Co3BP1IgqjgyqqdyLHr8Ckpawpce_1ZeNDd7n54CFnmwbufQI1OTe9MyWO1Q8SK2njxPJzfPo8qr0hjepEZ22oR0khhkjIffzBLdHBu7fZfyGFQ&state=a3b257ba95561f6a1809fd8337b220c8#!'
-        if self.authentication.authorization_code is None:
-            url_datas = request.build_absolute_uri().split('?code=', 1)
-            if len(url_datas) != 2:
+        if 'auth_code' not in request.session:
+            url_data = request.build_absolute_uri().split('?code=', 1)
+            if len(url_data) != 2:
                 logger.debug("Not authentified yet, redirect to the authorization URL : " + str(
                     self.authentication.authorization_url))
                 return redirect(self.authentication.authorization_url)
             else:
-                auth_code = url_datas[1].split('&state=')[0]
-                self.authentication.authorization_code = auth_code
-                result = self.authentication.get_access_token()
-                logger.debug("We have the TOKEN : " + str(result.access_token))
-                application = linkedin.LinkedInApplication(token=result.access_token)
-                self.get_resume_info(request, application)
+                auth_code = url_data[1].split('&state=')[0]
+                self.get_resume_info(request, auth_code)
                 return redirect(request.resolver_match.url_name)  # To change to access other pages
+        # self.get_resume_info(request)
         return self.get_response(request)
 
-    @staticmethod
-    def get_resume_info(request, application):
+    def get_resume_info(self, request, auth_code=None):
         """
         Get full information from a resume and add theses information to the session cache
+        :param auth_code: the authentication code needed to request the linkedinAPI
         :param request: the request
         :param application: the application filled with access token
         """
+        # if 'auth_code' not in request.session:
+        self.authentication.authorization_code = auth_code
+        request.session['auth_code'] = auth_code
+        linked_authentication = self.authentication.get_access_token()
+        logger.debug("We have the TOKEN : " + str(linked_authentication.access_token))
+        application = linkedin.LinkedInApplication(token=linked_authentication.access_token)
         data = application.get_profile()
-        logger.debug("Resume Data : " + str(data))
+        logger.debug("resume Data : " + str(data))
         request.session['firstName'] = data.get('firstName')
         request.session['lastName'] = data.get('lastName')
         request.session['headline'] = data.get('headline')
-        contact, created = Contact.objects.get_or_create(first_name=data.get('firstName'), last_name=data.get('lastName'),
+        contact, created = Contact.objects.get_or_create(first_name=data.get('firstName'),
+                                                         last_name=data.get('lastName'),
                                                          headline=data.get('headline'))
-        if not created:
+        if created:
+            contact.count = 1
+        else:
             logger.debug("Not created :" + str(contact.count))
             contact.count = contact.count + 1
             logger.debug("New count :" + str(contact.count))
             contact.save()
+        # else:
+        #     if 'firstName' not in request.session or 'lastName' not in request.session or 'headline' not in request.session :
+        #         self.authentication.authorization_code = request.session['auth_code']
+        #         linked_authentication = self.authentication.get_access_token()
+        #         application = linkedin.LinkedInApplication(token=linked_authentication.access_token)
+        #         data = application.get_profile()
+        #         logger.debug("resume Data : " + str(data))
+        #         request.session['firstName'] = data.get('firstName')
+        #         request.session['lastName'] = data.get('lastName')
+        #         request.session['headline'] = data.get('headline')

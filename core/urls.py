@@ -1,4 +1,4 @@
-"""CV URL Configuration
+"""resume URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.urls import path
 
-from CV.settings import base
+from resume.settings import base
 from core import views
 
 urlpatterns = [
