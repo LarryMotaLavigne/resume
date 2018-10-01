@@ -8,10 +8,11 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': 'resume',
+        'USER': 'resume_user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 INTERNAL_IPS = ['127.0.0.1']  # django-debug-toolbar need
