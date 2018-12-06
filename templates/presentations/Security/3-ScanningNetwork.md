@@ -48,3 +48,72 @@ TCP/IP Communication
   
 * UDP Scanning
 
+![UDP Scanning](https://www.oreilly.com/library/view/network-security-assessment/9780596510305/httpatomoreillycomsourceoreillyimages47279.png)
+
+
+## Scanning beyond IDS and Firewall
+
+* Packet Fragmentation 
+
+Send information which is re-assembles after the server receives all packages.
+```bash
+$ nmap -sS -T4 -A -f -v 192.168.168.5
+```
+
+* Source Routing
+
+![Source Routing](http://mti.binus.ac.id/files/2014/10/Untitled1.png)
+
+
+* IP Address Decoy :
+Generating or specifying IP addresses of the decoys
+```
+$ nmap -D RND:10 192.168.168.5
+```
+
+* IP Address Spoofing : 
+Change the source IP address so the attack appears to be coming from someone else
+
+  * Direct TTL Probes : Analyse the TTL package received
+  * IP Identification Number : Analyse the IP ID received
+  * TCP Flow Control Method : SYN-ACK packets
+  
+* Proxy Server
+
+Proxy Chaining : Chain several proxy server to hide the source IP address
+
+
+
+## Banner Grabbing
+Determine the OS running on a remote target. 
+It allows the attacker to figure out the vulnerabilities the system posses.
+
+* Active Banner Grabbing : Send packets
+* Passive Banner Grabbing : Network sniffing, page extension, error message
+
+#### How to identify Target System OS
+By looking at the Time to live (TTL) and TCP window size.
+
+| Operating System	| Time To Live	| TCP Window Size |
+|-------------------|---------------|-----------------|
+| Linux (Kernel 2.4 and 2.6) |	64	| 5840 |
+| Google Linux	| 64	| 5720 |
+| FreeBSD	|64	|65535 |
+| Windows XP	|128	|65535 |
+| Windows Vista and 7 (Server 2008)	|128	|8192 |
+| iOS 12.4 (Cisco Routers)	|255	|4128 |
+
+
+
+## Draw Network Diagrams
+Could be helpfull to show architecture, logical and physical path.
+It exists some Network Discovery and mapping tools.
+
+
+## How to protect ourself against Network attack ?
+
+* Close unused ports
+* Disable unnecessary services
+* Hide or customize banners
+* Troubleshoot service configuration errors
+* Calibrate firewall rules

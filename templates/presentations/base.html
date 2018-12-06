@@ -1,97 +1,80 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <title>Presentation Base Title</title>
 
-    <title>Presentation - #1 </title>
+    <meta name="description" content="Presentation" />
+    <meta name="author" content="Larry Mota--Lavigne" />
+    <link rel="stylesheet" href="{%  static "presentations/impressjs/extras/highlight/styles/github.css" %}">
 
-    <meta name="description" content="Standard Presentation">
-    <meta name="author" content="Larry Mota--Lavigne">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <link rel="stylesheet" href="{% static "presentations/revealjs/css/reveal.css" %}">
-    <link rel="stylesheet" href="{% static "presentations/revealjs/css/theme/black.css" %}" id="theme">
-    <style>
-        body {
-            background-image: url({% static 'images/icons/icon-256x256.png' %});
-            background-size: 4%;
-            background-repeat: no-repeat;
-            background-position: 3% 96%;
-        }
-    </style>
-    <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="{% static "presentations/revealjs/lib/css/zenburn.css" %}">
-
-    <!-- Printing and PDF exports -->
-    <script>
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? '{% static "presentations/revealjs/css/print/pdf.css"%}' : '{% static "presentations/revealjs/css/print/paper.css"%}';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
-
-    <!--[if lt IE 9]>
-		<script src="{% static "lib/js/html5shiv.js"%}"></script>
-		<![endif]-->
+    <link href="{%  static "presentations/impressjs/css/markdown-slides.css" %}" rel="stylesheet" />
+    <link href="{%  static "presentations/impressjs/css/devopsy.css"%}" rel="stylesheet" />
+    <link href="{%  static "presentations/impressjs/css/effects.css"%}" rel="stylesheet" />
 </head>
 
-<body>
-
-<div class="reveal">
-    {% block content %}
-    {% endblock %}
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 </div>
 
-<script src="{% static "presentations/revealjs/lib/js/head.min.js" %}"></script>
-<script src="{% static "presentations/revealjs/js/reveal.js" %}"></script>
+<div id="impress" data-transition-duration="1000">
 
-<script>
+<div id="markdown" class="step slide markdown" data-rel-x="0" data-rel-y="900">
+    {% block content %}
+    {% endblock %}
 
-    // More info https://github.com/hakimel/reveal.js#configuration
-    Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
 
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-        // More info https://github.com/hakimel/reveal.js#dependencies
-        dependencies: [
-            {
-                src: '{% static "presentations/revealjs/lib/js/classList.js"%}', condition: function () {
-                    return !document.body.classList;
-                }
-            },
-            {
-                src: '{% static "presentations/revealjs/plugin/markdown/marked.js"%}', condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
-            {
-                src: '{% static "presentations/revealjs/plugin/markdown/markdown.js"%}', condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
-            {
-                src: '{% static "presentations/revealjs/plugin/highlight/highlight.js"%}', async: true, callback: function () {
-                    hljs.initHighlightingOnLoad();
-                }
-            },
-            {src: '{% static "presentations/revealjs/plugin/search/search.js"%}', async: true},
-            {src: '{% static "presentations/revealjs/plugin/zoom-js/zoom.js"%}', async: true},
-            {src: '{% static "presentations/revealjs/plugin/notes/notes.js"%}', async: true}
-        ]
-    });
-
+<script type="text/javascript">
+var enableBwCss = function(){
+    disableDevopsCss();
+    disableEffectsCss();
+};
+var enableDevopsCss = function(){
+    document.body.classList.add("devopsy");
+    disableEffectsCss();
+};
+var disableDevopsCss = function(){
+    document.body.classList.remove("devopsy");
+};
+var enableEffectsCss = function(){
+    document.body.classList.add("effects");
+    disableDevopsCss();
+};
+var disableEffectsCss = function(){
+    document.body.classList.remove("effects");
+};
 </script>
 
+
+<div id="js-slide" class="step slide" data-rotate="0" data-x="4000" data-y="5000">
+<h1>CSS &amp; JavaScript magic</h1>
+
+<p>Just to emphasize my point, this last slide allows you to use a JavaScript powered menu to
+toggle the CSS style:</p>
+
+<p><a href="#" onclick="enableBwCss();" class="css-menu-bw">Black &amp; white</a>,
+<a href="#" onclick="enableDevopsCss();" class="css-menu-devopsy">Devopsy</a>,
+<a href="#" onclick="enableEffectsCss();" class="css-menu-effects">Effects overload</a></p>
+
+<p>Simplicity of Markdown married with full power of Impress.js!</p>
+
+</div>
+
+
+<div id="overview" class="step" data-x="5000" data-y="4000" data-scale="10" style="pointer-events: none;" data-rotate="5">
+</div>
+
+</div>
+
+<div id="impress-toolbar"></div>
+
+<script type="text/javascript" src="{%  static "presentations/impressjs/extras/highlight/highlight.pack.js"%}"></script>
+<script type="text/javascript" src="{%  static "presentations/impressjs/extras/mermaid/mermaid.min.js"%}"></script>
+<script type="text/javascript" src="{%  static "presentations/impressjs/extras/markdown/markdown.js"%}"></script>
+<script type="text/javascript" src="{%  static "presentations/impressjs/js/impress.js"%}"></script>
+<script>impress().init();</script>
 </body>
 </html>

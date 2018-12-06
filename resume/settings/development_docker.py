@@ -4,16 +4,38 @@ from resume.settings.base import *
 ENVIRONMENT_NAME = 'DEVELOPMENT'
 ENVIRONMENT_COLOR = 'grey'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'database',
+        'PORT': 5432,
     }
 }
-INTERNAL_IPS = ['127.0.0.1']  # django-debug-toolbar need
+
 
 SECRET_KEY = "development_key"
+
+
+#########################################################
+# django-debug-toolbar
+#########################################################
+
+# We need this URL variabilisation because we can't prevent which internal URL docker will use
+from fnmatch import fnmatch
+
+
+class glob_list(list):
+    def __contains__(self, key):
+        for elt in self:
+            if fnmatch(key, elt):
+                return True
+        return False
+
+
+INTERNAL_IPS = glob_list(['127.0.0.1', '172.*.*.*'])
 
 #########################################################
 # LinkedIn Info

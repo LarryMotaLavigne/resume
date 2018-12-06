@@ -3,6 +3,7 @@
 *.whl
 venv/
 B2R/secret.py
+db.sqlite3
 
 # Django
 *.log
