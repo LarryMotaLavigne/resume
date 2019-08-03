@@ -1,4 +1,4 @@
-# CV
+# Resume
 
 [![Build Status](https://travis-ci.com/Squalex/resume.svg?branch=master)](https://travis-ci.com/Squalex/resume)
 
